@@ -47,5 +47,6 @@ adr_genre createElemenGenre(infotype_genre x);
 void insertMovie(listMovie &LM, adr_movie p);
 void insertGenre(listGenre &LG, adr_genre p);
 void showMovieGenre(listMovie LM);
+int menu();
 
 #endif // MOVIE_H_INCLUDED
