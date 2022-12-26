@@ -55,7 +55,9 @@ int menu(){
     int i;
     cout << "============================================================" << endl;
     cout << "MENU" << endl;
-    cout << " 1. Menambahkan Film " << endl;
+    cout << "1. Menambahkan Film" << endl;
+    cout << "2. Menampilkan Film" << endl;
+    cout << "0. Exit" << endl;
     cout << "Pilihan : " ; cin >> i ;
     return i;
 }

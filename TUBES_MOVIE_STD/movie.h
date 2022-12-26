@@ -1,6 +1,7 @@
 #ifndef MOVIE_H_INCLUDED
 #define MOVIE_H_INCLUDED
 #include <iostream>
+#include <string.h>
 
 using namespace std;
 
