@@ -8,6 +8,8 @@ int main(){
     createlistMovie(LM);
     createlistGenre(LG);
 
+    infotype_movie movie;
+
     adr_movie p_movie;
     adr_genre p_genre;
 
@@ -15,7 +17,7 @@ int main(){
     while (pilihan != 0){
         switch (pilihan){
             case 1:{
-
+                cout << "Nama Film\t: " ; cin >> movie
             }
         }
     }
