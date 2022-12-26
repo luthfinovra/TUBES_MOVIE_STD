@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1672027198 source:d:\kuliah\c++\tubes_movie\tubes_movie_std\tubes_movie_std\main.cpp
+	"movie.h"
+
+1672027460 d:\kuliah\c++\tubes_movie\tubes_movie_std\tubes_movie_std\movie.h
+	<iostream>
+

@@ -50,3 +50,12 @@ void showMovieGenre(listMovie LM){
         }
     }
 }
+
+int menu(){
+    int i;
+    cout << "============================================================" << endl;
+    cout << "MENU" << endl;
+    cout << " 1. Menambahkan Film " << endl;
+    cout << "Pilihan : " ; cin >> i ;
+    return i;
+}
