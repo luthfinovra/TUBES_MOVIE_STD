@@ -45,9 +45,14 @@ void createlistMovie(listMovie &LM);
 void createlistGenre(listGenre &LG);
 adr_movie createElemenMovie(infotype_movie x);
 adr_genre createElemenGenre(infotype_genre x);
+adr_relation createElemenRelation(adr_genre p_genre);
 void insertMovie(listMovie &LM, adr_movie p);
 void insertGenre(listGenre &LG, adr_genre p);
+void showGenre(listGenre LG);
 void showMovieGenre(listMovie LM);
+adr_genre searchGenre(listGenre LG, infotype_genre x);
+void addGenre(listMovie &LM, listGenre &LG, infotype_genre x, adr_movie p_movie);
+void addRelation(listMovie &LM, adr_movie p_movie, adr_genre p_genre);
 int menu();
 
 #endif // MOVIE_H_INCLUDED
