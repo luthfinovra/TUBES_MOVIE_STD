@@ -64,6 +64,7 @@ void showGenre(listGenre LG){
         cout << "Genre Kosong" << endl;
     }else{
         adr_genre p = first(LG);
+        cout << endl << "Daftar Genre" << endl;
         cout << "Genre : ";
         while(p != NULL){
             cout << info(p) << ", ";
@@ -77,6 +78,7 @@ void showMovieGenre(listMovie LM){
     if(first(LM) == NULL){
         cout << "Data kosong" << endl;
     } else {
+        cout << endl << "Daftar Film" << endl;
         adr_movie p = first(LM);
         adr_relation q;
         while (p != NULL){

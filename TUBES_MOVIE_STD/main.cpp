@@ -39,6 +39,7 @@ int main(){
             cout << "Input Tidak Valid!" << endl;
         }
         getline(cin, dummy);
+        system("CLS");
         pilihan = menu();
     }
 
