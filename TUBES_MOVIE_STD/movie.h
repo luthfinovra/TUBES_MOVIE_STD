@@ -49,10 +49,18 @@ adr_relation createElemenRelation(adr_genre p_genre);
 void insertMovie(listMovie &LM, adr_movie p);
 void insertGenre(listGenre &LG, adr_genre p);
 void showGenre(listGenre LG);
+void showMovieSelectGenre(listMovie LM, infotype_genre genre);
 void showMovieGenre(listMovie LM);
+adr_movie searchMovie(listMovie LM, infotype_movie x);
 adr_genre searchGenre(listGenre LG, infotype_genre x);
 void addGenre(listMovie &LM, listGenre &LG, infotype_genre x, adr_movie p_movie);
 void addRelation(listMovie &LM, adr_movie p_movie, adr_genre p_genre);
+int countMovie(listMovie LM);
+int countGenre(listGenre LG);
+int countMovieWGenre(listMovie LM, infotype_genre x);
+infotype_genre MostGenre(listGenre LG, listMovie LM);
+infotype_genre LeastGenre(listGenre LG, listMovie LM);
+void deleteMovie(listMovie &LM, listGenre &LG, infotype_movie x);
 int menu();
 
 #endif // MOVIE_H_INCLUDED

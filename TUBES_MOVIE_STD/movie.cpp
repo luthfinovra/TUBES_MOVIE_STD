@@ -39,6 +39,17 @@ void insertMovie(listMovie &LM, adr_movie p){
     }
 }
 
+adr_movie searchMovie(listMovie LM, infotype_movie x){
+    adr_movie p = first(LM);
+    while(p!=NULL){
+        if(info(p)==x){
+            return p;
+        }
+        p = next(p);
+    }
+    return p;
+}
+
 adr_genre searchGenre(listGenre LG, infotype_genre x){
     adr_genre p = first(LG);
     while((p!=NULL)){
@@ -67,10 +78,31 @@ void showGenre(listGenre LG){
         cout << endl << "Daftar Genre" << endl;
         cout << "Genre : ";
         while(p != NULL){
-            cout << info(p) << ", ";
+            cout << info(p);
+            if(next(p)!=NULL){
+                cout << ", ";
+            }
             p = next(p);
         }
         cout << endl;
+    }
+}
+
+void showMovieSelectGenre(listMovie LM, infotype_genre genre){
+    adr_movie p = first(LM);
+    adr_relation q;
+    int i = 1;
+    while (p != NULL){
+        q = child(p);
+        while(q!=NULL){
+                if(info(info(q))==genre){
+                    cout << i << ". " << info(p) << endl;
+                    i++;
+                    break;
+                }
+                q = next(q);
+        }
+            p = next(p);
     }
 }
 
@@ -82,13 +114,17 @@ void showMovieGenre(listMovie LM){
         adr_movie p = first(LM);
         adr_relation q;
         while (p != NULL){
-            cout << "Nama Film\t: " << info(p) << ", Genre: ";
+            cout << "Nama Film: " << info(p) << ", Genre: ";
             q = child(p);
             while(q!=NULL){
-                cout << info(info(q)) << endl;
+                cout << info(info(q));
+                if(next(q)!=NULL){
+                    cout << ", ";
+                }
                 q = next(q);
             }
             p = next(p);
+            cout << endl;
         }
     }
 }
@@ -108,13 +144,90 @@ void addRelation(listMovie &LM, adr_movie p_movie, adr_genre p_genre){
     child(p_movie) = p_relation;
 }
 
+int countMovie(listMovie LM){
+    int i = 0;
+    adr_movie p = first(LM);
+    while(p != NULL){
+        i++;
+        p = next(p);
+    }
+    return i;
+}
+
+int countGenre(listGenre LG){
+    int i = 0;
+    adr_genre p = first(LG);
+    while(p != NULL){
+        i++;
+        p = next(p);
+    }
+    return i;
+}
+
+int countMovieWGenre(listMovie LM, infotype_genre x){
+    int i = 0;
+    adr_movie p_movie = first(LM);
+    adr_relation p_relation = NULL;
+    while(p_movie!=NULL){
+        p_relation = child(p_movie);
+        while(p_relation!=NULL){
+            if(info(info(p_relation))==x){
+                i++;
+                break;
+            }else{
+                p_relation = next(p_relation);
+            }
+        }
+        p_movie = next(p_movie);
+    }
+    return i;
+}
+
+infotype_genre MostGenre(listGenre LG, listMovie LM){
+    int i = 0, maks = 0;
+    infotype_genre genre_maks = "";
+    adr_genre p_genre = first(LG);
+    while(p_genre !=NULL){
+        i = countMovieWGenre(LM, info(p_genre));
+        if(i > maks){
+            maks = i;
+            genre_maks = info(p_genre);
+        }
+        p_genre = next(p_genre);
+    }
+    return genre_maks;
+}
+
+infotype_genre LeastGenre(listGenre LG, listMovie LM){
+    int i = 0, minimum = -1;
+    infotype_genre genre_min = "";
+    adr_genre p_genre = first(LG);
+    while(p_genre !=NULL){
+        i = countMovieWGenre(LM, info(p_genre));
+        if(i < minimum){
+            minimum = i;
+            genre_min = info(p_genre);
+        }else if(minimum == -1){
+            minimum = i;
+            genre_min = info(p_genre);
+        }
+        p_genre = next(p_genre);
+    }
+    return genre_min;
+}
+
 int menu(){
     int i;
     cout << "============================================================" << endl;
     cout << "MENU" << endl;
-    cout << "1. Menambahkan Film" << endl;
-    cout << "2. Menampilkan Film dan Genre" << endl;
-    cout << "3. Menampilkan Genre" << endl;
+    cout << "1. Menambahkan Film dan Genre" << endl;
+    cout << "2. Mencari Film" << endl;
+    cout << "3. Menampilkan Seluruh Film dan Genre" << endl;
+    cout << "4. Menampilkan Film dengan Genre Tertentu" << endl;
+    cout << "5. Menampilkan total Film dan Genre" << endl;
+    cout << "6. Menampilkan Genre dengan film terdaftar terbanyak" << endl;
+    cout << "7. Menampilkan Genre dengan film terdaftar paling sedikit" << endl;
+    cout << "8. Menghapus Data Film" << endl;
     cout << "0. Exit" << endl;
     cout << "Pilihan : " ; cin >> i ;
     return i;
