@@ -216,9 +216,79 @@ infotype_genre LeastGenre(listGenre LG, listMovie LM){
     return genre_min;
 }
 
-int menu(){
-    int i;
-    cout << "============================================================" << endl;
+
+void deleteMovie(listMovie &LM, infotype_movie x){
+    adr_movie p_movie = searchMovie(LM, x);
+    if(p_movie == NULL){
+        cout << "Film Tidak Ditemukan!!" << endl;
+    }else{
+        deleteAllRelation(p_movie);
+        if(p_movie == first(LM)){
+            first(LM) = next(p_movie);
+            delete p_movie;
+        }else{
+            adr_movie prev_movie = first(LM);
+            while(next(prev_movie)!=p_movie){
+                prev_movie = next(prev_movie);
+            }
+            next(prev_movie) = next(p_movie);
+            delete p_movie;
+        }
+    }
+}
+
+void deleteAllRelation(adr_movie &p_movie){
+    adr_relation p_relation;
+    while(child(p_movie)!=NULL){
+        p_relation = child(p_movie);
+        child(p_movie) = next(p_relation);
+        delete p_relation;
+    }
+}
+
+void deleteGenre(listGenre &LG, infotype_genre x){
+    adr_genre p_genre = first(LG), prev = first(LG);
+    while(info(p_genre)!=x){
+        prev = p_genre;
+        p_genre = next(p_genre);
+    }
+    if(p_genre == first(LG)){
+        first(LG) = next(p_genre);
+        delete p_genre;
+    }else{
+        next(prev) = next(p_genre);
+        delete p_genre;
+    }
+}
+
+void deleteAllMovie(listMovie &LM){
+    adr_movie p_movie = first(LM);
+    while(p_movie!=NULL){
+        deleteMovie(LM, info(p_movie));
+        p_movie = first(LM);
+    }
+}
+
+void deleteAllGenre(listGenre &LG){
+    adr_genre p_genre = first(LG);
+    while(p_genre!=NULL){
+        deleteGenre(LG, info(p_genre));
+        p_genre = first(LG);
+    }
+}
+
+string menu(){
+    string i;
+    cout << "===========================================================" << endl;
+    cout << "                 TUGAS BESAR STRUKTUR DATA                 " << endl;
+    cout << " Kelas : IF-45-12     Kelompok : VGA    Linked List Tipe C " << endl;
+    cout << "===========================================================" << endl;
+    cout << "                      ANGGOTA KELOMPOK                     " << endl;
+    cout << "               1. Adiandra Haikal(1301213xxx)              " << endl;
+    cout << "                 2. Luthfi Novra(1301213454)               " << endl;
+    cout << "===========================================================" << endl;
+    cout << "                       DATABASE FILM                       " << endl;
+    cout << "===========================================================" << endl;
     cout << "MENU" << endl;
     cout << "1. Menambahkan Film dan Genre" << endl;
     cout << "2. Mencari Film" << endl;
@@ -228,7 +298,9 @@ int menu(){
     cout << "6. Menampilkan Genre dengan film terdaftar terbanyak" << endl;
     cout << "7. Menampilkan Genre dengan film terdaftar paling sedikit" << endl;
     cout << "8. Menghapus Data Film" << endl;
+    cout << "9. Menghapus Seluruh Film" << endl;
     cout << "0. Exit" << endl;
+    cout << "===========================================================" << endl;
     cout << "Pilihan : " ; cin >> i ;
     return i;
 }

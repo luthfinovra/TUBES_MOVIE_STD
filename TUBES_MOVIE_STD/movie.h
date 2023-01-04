@@ -60,7 +60,11 @@ int countGenre(listGenre LG);
 int countMovieWGenre(listMovie LM, infotype_genre x);
 infotype_genre MostGenre(listGenre LG, listMovie LM);
 infotype_genre LeastGenre(listGenre LG, listMovie LM);
-void deleteMovie(listMovie &LM, listGenre &LG, infotype_movie x);
-int menu();
+void deleteMovie(listMovie &LM, infotype_movie x);
+void deleteAllMovie(listMovie &LM);
+void deleteAllGenre(listGenre &LG);
+void deleteAllRelation(adr_movie &p_movie);
+void deleteGenre(listGenre &LG, infotype_genre x);
+string menu();
 
 #endif // MOVIE_H_INCLUDED
