@@ -284,7 +284,7 @@ string menu(){
     cout << " Kelas : IF-45-12     Kelompok : VGA    Linked List Tipe C " << endl;
     cout << "===========================================================" << endl;
     cout << "                      ANGGOTA KELOMPOK                     " << endl;
-    cout << "               1. Adiandra Haikal(1301213xxx)              " << endl;
+    cout << "               1. Adiandra Haikal(1301213200)              " << endl;
     cout << "                 2. Luthfi Novra(1301213454)               " << endl;
     cout << "===========================================================" << endl;
     cout << "                       DATABASE FILM                       " << endl;
